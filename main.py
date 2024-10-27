@@ -1,7 +1,12 @@
-import requests
-from bs4 import BeautifulSoup
+from ossapi import Ossapi
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-URL = "https://osu.ppy.sh/users/33933668"
-r = requests.get(URL)
-soup = BeautifulSoup(r.content, 'html5lib')
-print(soup.encode("utf-8"))
+client_id = os.getenv("CLIENT_ID")
+client_secret = os.getenv("CLIENT_SECRET")
+user_id = os.getenv("USER_ID")
+api = Ossapi(client_id, client_secret)
+
+user = api.user(user_id, mode="osu")
+print(user.rank_highest.rank)

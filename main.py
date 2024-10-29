@@ -15,7 +15,7 @@ cl = Client()
 cl.login(username, password)
 
 user = api.user(user_id, mode="osu")
-rank = user.rank_history.data[0]
+rank = user.rank_history.data[89]
 bio = f"{rank:,d}"
 
 if rank % 10 == 1:
